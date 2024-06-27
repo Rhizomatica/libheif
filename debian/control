@@ -1,0 +1,301 @@
+Source: libheif
+Section: libs
+Priority: optional
+Maintainer: Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>
+Uploaders:
+ Joachim Bauch <bauch@struktur.de>
+Build-Depends:
+ cmake,
+ debhelper-compat (= 13),
+ libaom-dev,
+ libavcodec-dev,
+ libdav1d-dev,
+ libde265-dev (>= 1.0.7),
+ libgdk-pixbuf-2.0-dev,
+ libjpeg-dev,
+ libopenjp2-7-dev,
+ libpng-dev,
+ librav1e-dev [amd64 arm64 armel armhf mips64el mipsel powerpc ppc64 ppc64el riscv64 s390x],
+ libsvtav1enc-dev,
+ libx265-dev,
+ pkgconf
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+Homepage: http://www.libheif.org
+Vcs-Git: https://salsa.debian.org/multimedia-team/libheif.git
+Vcs-Browser: https://salsa.debian.org/multimedia-team/libheif
+
+Package: libheif1
+Architecture: any
+Multi-Arch: same
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+ ${libheif:Depends},
+ libheif-plugin-libde265 (= ${binary:Version})
+Recommends:
+ ${libheif:Recommends},
+ libheif-plugin-aomenc (= ${binary:Version})
+Suggests:
+ ${libheif:Suggests},
+ libheif-plugin-ffmpegdec (= ${binary:Version}),
+ libheif-plugin-jpegdec (= ${binary:Version}),
+ libheif-plugin-jpegenc (= ${binary:Version}),
+ libheif-plugin-j2kdec (= ${binary:Version}),
+ libheif-plugin-j2kenc (= ${binary:Version}),
+ libheif-plugin-rav1e (= ${binary:Version}),
+ libheif-plugin-svtenc (= ${binary:Version})
+Description: ISO/IEC 23008-12:2017 HEIF file format decoder - shared library
+ libheif is an ISO/IEC 23008-12:2017 HEIF file format decoder. HEIF is a new
+ image file format employing HEVC (h.265) image coding for the best compression
+ ratios currently possible.
+ .
+ This package contains the shared library.
+
+Package: libheif-plugin-aomdec
+Architecture: any
+Multi-Arch: same
+Depends:
+ libheif1 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: ISO/IEC 23008-12:2017 HEIF file format decoder - aomdec plugin
+ libheif is an ISO/IEC 23008-12:2017 HEIF file format decoder. HEIF is a new
+ image file format employing HEVC (h.265) image coding for the best compression
+ ratios currently possible.
+ .
+ This package contains the aomdec plugin
+
+Package: libheif-plugin-aomenc
+Architecture: any
+Multi-Arch: same
+Depends:
+ libheif1 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: ISO/IEC 23008-12:2017 HEIF file format decoder - aomenc plugin
+ libheif is an ISO/IEC 23008-12:2017 HEIF file format decoder. HEIF is a new
+ image file format employing HEVC (h.265) image coding for the best compression
+ ratios currently possible.
+ .
+ This package contains the aomenc plugin
+
+Package: libheif-plugin-dav1d
+Architecture: any
+Multi-Arch: same
+Depends:
+ libheif1 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: ISO/IEC 23008-12:2017 HEIF file format decoder - dav1d plugin
+ libheif is an ISO/IEC 23008-12:2017 HEIF file format decoder. HEIF is a new
+ image file format employing HEVC (h.265) image coding for the best compression
+ ratios currently possible.
+ .
+ This package contains the dav1d plugin
+
+Package: libheif-plugin-ffmpegdec
+Architecture: any
+Multi-Arch: same
+Depends:
+ libheif1 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: ISO/IEC 23008-12:2017 HEIF file format decoder - ffmpegdec plugin
+ libheif is an ISO/IEC 23008-12:2017 HEIF file format decoder. HEIF is a new
+ image file format employing HEVC (h.265) image coding for the best compression
+ ratios currently possible.
+ .
+ This package contains the ffmpegdec plugin
+
+Package: libheif-plugin-j2kdec
+Architecture: any
+Multi-Arch: same
+Depends:
+ libheif1 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: ISO/IEC 23008-12:2017 HEIF file format decoder - j2kdec plugin
+ libheif is an ISO/IEC 23008-12:2017 HEIF file format decoder. HEIF is a new
+ image file format employing HEVC (h.265) image coding for the best compression
+ ratios currently possible.
+ .
+ This package contains the j2kdec plugin
+
+Package: libheif-plugin-j2kenc
+Architecture: any
+Multi-Arch: same
+Depends:
+ libheif1 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: ISO/IEC 23008-12:2017 HEIF file format decoder - j2kenc plugin
+ libheif is an ISO/IEC 23008-12:2017 HEIF file format decoder. HEIF is a new
+ image file format employing HEVC (h.265) image coding for the best compression
+ ratios currently possible.
+ .
+ This package contains the j2kenc plugin
+
+Package: libheif-plugin-uvg266
+Architecture: any
+Multi-Arch: same
+Depends:
+ libheif1 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: ISO/IEC 23008-12:2017 HEIF file format decoder - uvg266 plugin
+ libheif is an ISO/IEC 23008-12:2017 HEIF file format decoder. HEIF is a new
+ image file format employing HEVC (h.265) image coding for the best compression
+ ratios currently possible.
+ .
+ This package contains the uvg266 plugin
+
+Package: libheif-plugin-jpegdec
+Architecture: any
+Multi-Arch: same
+Depends:
+ libheif1 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: ISO/IEC 23008-12:2017 HEIF file format decoder - jpegdec plugin
+ libheif is an ISO/IEC 23008-12:2017 HEIF file format decoder. HEIF is a new
+ image file format employing HEVC (h.265) image coding for the best compression
+ ratios currently possible.
+ .
+ This package contains the jpegdec plugin
+
+Package: libheif-plugin-jpegenc
+Architecture: any
+Multi-Arch: same
+Depends:
+ libheif1 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: ISO/IEC 23008-12:2017 HEIF file format decoder - jpegenc plugin
+ libheif is an ISO/IEC 23008-12:2017 HEIF file format decoder. HEIF is a new
+ image file format employing HEVC (h.265) image coding for the best compression
+ ratios currently possible.
+ .
+ This package contains the jpegenc plugin
+
+Package: libheif-plugin-libde265
+Architecture: any
+Multi-Arch: same
+Depends:
+ libheif1 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: ISO/IEC 23008-12:2017 HEIF file format decoder - libde265 plugin
+ libheif is an ISO/IEC 23008-12:2017 HEIF file format decoder. HEIF is a new
+ image file format employing HEVC (h.265) image coding for the best compression
+ ratios currently possible.
+ .
+ This package contains the libde265 plugin
+
+Package: libheif-plugin-rav1e
+Architecture: amd64 arm64 armel armhf mips64el mipsel powerpc ppc64 ppc64el riscv64 s390x
+Multi-Arch: same
+Depends:
+ libheif1 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: ISO/IEC 23008-12:2017 HEIF file format decoder - rav1e plugin
+ libheif is an ISO/IEC 23008-12:2017 HEIF file format decoder. HEIF is a new
+ image file format employing HEVC (h.265) image coding for the best compression
+ ratios currently possible.
+ .
+ This package contains the rav1e plugin
+
+Package: libheif-plugin-svtenc
+Architecture: any
+Multi-Arch: same
+Depends:
+ libheif1 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: ISO/IEC 23008-12:2017 HEIF file format decoder - svtenc plugin
+ libheif is an ISO/IEC 23008-12:2017 HEIF file format decoder. HEIF is a new
+ image file format employing HEVC (h.265) image coding for the best compression
+ ratios currently possible.
+ .
+ This package contains the svtenc plugin
+
+Package: libheif-plugin-x265
+Architecture: any
+Multi-Arch: same
+Depends:
+ libheif1 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: ISO/IEC 23008-12:2017 HEIF file format decoder - x265 plugin
+ libheif is an ISO/IEC 23008-12:2017 HEIF file format decoder. HEIF is a new
+ image file format employing HEVC (h.265) image coding for the best compression
+ ratios currently possible.
+ .
+ This package contains the x265 plugin
+
+Package: libheif-dev
+Section: libdevel
+Multi-Arch: same
+Architecture: any
+Depends:
+ libheif1 (= ${binary:Version}),
+ libaom-dev,
+ libdav1d-dev,
+ libde265-dev (>= 1.0.7),
+ libsharpyuv-dev,
+ libx265-dev,
+ ${misc:Depends}
+Description: ISO/IEC 23008-12:2017 HEIF file format decoder - development files
+ libheif is an ISO/IEC 23008-12:2017 HEIF file format decoder. HEIF is a new
+ image file format employing HEVC (h.265) image coding for the best compression
+ ratios currently possible.
+ .
+ The development headers for compiling programs that use libheif are provided
+ by this package.
+
+Package: libheif-examples
+Section: video
+Architecture: any
+Depends:
+ libheif1 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: ISO/IEC 23008-12:2017 HEIF file format decoder - examples
+ libheif is an ISO/IEC 23008-12:2017 HEIF file format decoder. HEIF is a new
+ image file format employing HEVC (h.265) image coding for the best compression
+ ratios currently possible.
+ .
+ Sample applications using libheif are provided by this package.
+
+Package: heif-thumbnailer
+Section: graphics
+Architecture: any
+Multi-Arch: foreign
+Depends:
+ libheif1 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: ISO/IEC 23008-12:2017 HEIF file format decoder - thumbnailer
+ libheif is an ISO/IEC 23008-12:2017 HEIF file format decoder. HEIF is a new
+ image file format employing HEVC (h.265) image coding for the best compression
+ ratios currently possible.
+ .
+ A thumbnailer for HEIF images that can be used by Nautilus is provided by this
+ package.
+
+Package: heif-gdk-pixbuf
+Section: graphics
+Architecture: any
+Multi-Arch: same
+Depends:
+ libheif1 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: ISO/IEC 23008-12:2017 HEIF file format decoder - gdk-pixbuf loader
+ libheif is an ISO/IEC 23008-12:2017 HEIF file format decoder. HEIF is a new
+ image file format employing HEVC (h.265) image coding for the best compression
+ ratios currently possible.
+ .
+ A gdk-pixbuf loader module for applications such as "gpicview" and "pcmanfm"
+ is provided by this package.
