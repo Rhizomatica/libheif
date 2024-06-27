@@ -241,7 +241,6 @@ Depends:
  libaom-dev,
  libdav1d-dev,
  libde265-dev (>= 1.0.7),
- libsharpyuv-dev,
  libx265-dev,
  ${misc:Depends}
 Description: ISO/IEC 23008-12:2017 HEIF file format decoder - development files
