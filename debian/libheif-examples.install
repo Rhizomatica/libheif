@@ -5,4 +5,3 @@ usr/bin/heif-thumbnailer
 usr/share/man/*/heif-enc.*
 usr/share/man/*/heif-dec.*
 usr/share/man/*/heif-info.*
-usr/share/man/*/heif-.thumbnailer*
