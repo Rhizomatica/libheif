@@ -41,8 +41,6 @@ Suggests:
  libheif-plugin-ffmpegdec (= ${binary:Version}),
  libheif-plugin-jpegdec (= ${binary:Version}),
  libheif-plugin-jpegenc (= ${binary:Version}),
- libheif-plugin-j2kdec (= ${binary:Version}),
- libheif-plugin-j2kenc (= ${binary:Version}),
  libheif-plugin-rav1e (= ${binary:Version}),
  libheif-plugin-svtenc (= ${binary:Version})
 Description: ISO/IEC 23008-12:2017 HEIF file format decoder - shared library
