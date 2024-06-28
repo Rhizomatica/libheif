@@ -1,3 +1,9 @@
+libheif (1.18.0-1) unstable; urgency=medium
+
+  * New upstream
+
+ -- Rafael Diniz <rafael@riseup.net>  Fri, 28 Jun 2024 19:54:54 +0100
+
 libheif (1.17.6-3) unstable; urgency=medium
 
   * Team upload
