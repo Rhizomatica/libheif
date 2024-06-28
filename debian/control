@@ -218,6 +218,20 @@ Description: ISO/IEC 23008-12:2017 HEIF file format decoder - svtenc plugin
  .
  This package contains the svtenc plugin
 
+Package: libheif-plugin-vvdec
+Architecture: any
+Multi-Arch: same
+Depends:
+ libheif1 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: ISO/IEC 23008-12:2017 HEIF file format decoder - vvdec plugin
+ libheif is an ISO/IEC 23008-12:2017 HEIF file format decoder. HEIF is a new
+ image file format employing HEVC (h.265) image coding for the best compression
+ ratios currently possible.
+ .
+ This package contains the svtenc plugin
+
 Package: libheif-plugin-x265
 Architecture: any
 Multi-Arch: same
