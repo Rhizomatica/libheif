@@ -23,9 +23,10 @@
 #include "decoder_vvdec.h"
 #include <cstring>
 #include <cassert>
+#include <vector>
+#include <algorithm>
 
 #include <vvdec/vvdec.h>
-#include <vector>
 
 
 struct vvdec_decoder
@@ -39,7 +40,6 @@ struct vvdec_decoder
 };
 
 static const char kSuccess[] = "Success";
-static const char kEmptyString[] = "";
 
 static const int VVDEC_PLUGIN_PRIORITY = 100;
 
