@@ -1,9 +1,9 @@
 /*
-  libheif example application.
+  libheif icbr unit tests
 
   MIT License
 
-  Copyright (c) 2019 Dirk Farin <dirk.farin@gmail.com>
+  Copyright (c) 2024 Brad Hards <bradh@frogmouth.net>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
@@ -23,35 +23,29 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 */
-#ifndef EXAMPLE_ENCODER_Y4M_H
-#define EXAMPLE_ENCODER_Y4M_H
 
-#include <string>
+#include "catch.hpp"
+#include "box.h"
+#include <cstdint>
+#include <iostream>
 
-#include "encoder.h"
+TEST_CASE("icbr bad") {
+  std::vector<uint8_t> testData{0x00, 0x00, 0x00, 0x00, 'i', 'c',  'b',  'r',
+                                0x00, 0x11, 0x69, 0x6c, 0x6f, 0x9d, 0xf4, 0x89,};
+  auto reader = std::make_shared<StreamReader_memory>(testData.data(),
+                                                      testData.size(), false);
 
-class Y4MEncoder : public Encoder
-{
-public:
-  Y4MEncoder();
+  BitstreamRange range(reader, testData.size());
+  for (;;) {
+    std::shared_ptr<Box> box;
+    Error error = Box::read(range, &box);
+    if (error != Error::Ok || range.error()) {
+      break;
+    }
 
-  heif_colorspace colorspace(bool has_alpha) const override
-  {
-    return heif_colorspace_YCbCr;
+    box->get_type();
+    box->get_type_string();
+    Indent indent;
+    box->dump(indent);
   }
-
-  heif_chroma chroma(bool has_alpha, int bit_depth) const override
-  {
-    return heif_chroma_420;
-  }
-
-  void UpdateDecodingOptions(const struct heif_image_handle* handle,
-                             struct heif_decoding_options* options) const override;
-
-  bool Encode(const struct heif_image_handle* handle,
-              const struct heif_image* image, const std::string& filename) override;
-
-private:
-};
-
-#endif  // EXAMPLE_ENCODER_Y4M_H
+}

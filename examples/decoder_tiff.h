@@ -1,9 +1,9 @@
 /*
-  libheif example application.
+  libheif example application "heif".
 
   MIT License
 
-  Copyright (c) 2019 Dirk Farin <dirk.farin@gmail.com>
+  Copyright (c) 2024 Joachim Bauch <bauch@struktur.de>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
@@ -23,35 +23,12 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 */
-#ifndef EXAMPLE_ENCODER_Y4M_H
-#define EXAMPLE_ENCODER_Y4M_H
 
-#include <string>
+#ifndef LIBHEIF_DECODER_TIFF_H
+#define LIBHEIF_DECODER_TIFF_H
 
-#include "encoder.h"
+#include "decoder.h"
 
-class Y4MEncoder : public Encoder
-{
-public:
-  Y4MEncoder();
+InputImage loadTIFF(const char* filename);
 
-  heif_colorspace colorspace(bool has_alpha) const override
-  {
-    return heif_colorspace_YCbCr;
-  }
-
-  heif_chroma chroma(bool has_alpha, int bit_depth) const override
-  {
-    return heif_chroma_420;
-  }
-
-  void UpdateDecodingOptions(const struct heif_image_handle* handle,
-                             struct heif_decoding_options* options) const override;
-
-  bool Encode(const struct heif_image_handle* handle,
-              const struct heif_image* image, const std::string& filename) override;
-
-private:
-};
-
-#endif  // EXAMPLE_ENCODER_Y4M_H
+#endif //LIBHEIF_DECODER_TIFF_H
