@@ -1,9 +1,14 @@
+libheif (1.18.2-1) unstable; urgency=medium
+
+  * New upstream. VVC support with vvenc.
+
+ -- Rafael Diniz <rafael@riseup.net>  Fri, 16 Aug 2024 16:32:23 +0100
+
 libheif (1.18.1-1) unstable; urgency=medium
 
   * New upstream
 
  -- Rafael Diniz <rafael@riseup.net>  Sun, 21 Jul 2024 23:57:59 +0100
-
 
 libheif (1.18.0-1) unstable; urgency=medium
 
