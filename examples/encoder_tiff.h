@@ -1,5 +1,5 @@
 /*
-  libheif icbr unit tests
+  libheif example application.
 
   MIT License
 
@@ -23,29 +23,42 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 */
+#ifndef EXAMPLE_ENCODER_TIFF_H
+#define EXAMPLE_ENCODER_TIFF_H
 
-#include "catch.hpp"
-#include "box.h"
-#include <cstdint>
-#include <iostream>
+#include <string>
 
-TEST_CASE("icbr bad") {
-  std::vector<uint8_t> testData{0x00, 0x00, 0x00, 0x00, 'i', 'c',  'b',  'r',
-                                0x00, 0x11, 0x69, 0x6c, 0x6f, 0x9d, 0xf4, 0x89,};
-  auto reader = std::make_shared<StreamReader_memory>(testData.data(),
-                                                      testData.size(), false);
+#include "encoder.h"
 
-  BitstreamRange range(reader, testData.size());
-  for (;;) {
-    std::shared_ptr<Box> box;
-    Error error = Box::read(range, &box);
-    if (error != Error::Ok || range.error()) {
-      break;
-    }
+class TiffEncoder : public Encoder
+{
+public:
+  TiffEncoder();
 
-    box->get_type();
-    box->get_type_string();
-    Indent indent;
-    box->dump(indent);
+
+  heif_colorspace colorspace(bool has_alpha) const override
+  {
+    return heif_colorspace_RGB;
   }
-}
+
+  heif_chroma chroma(bool has_alpha, int bit_depth) const override
+  {
+    if (bit_depth == 8) {
+      if (has_alpha)
+        return heif_chroma_interleaved_RGBA;
+      else
+        return heif_chroma_interleaved_RGB;
+    }
+    else {
+      if (has_alpha)
+        return heif_chroma_interleaved_RRGGBBAA_BE;
+      else
+        return heif_chroma_interleaved_RRGGBB_BE;
+    }
+  }
+
+  bool Encode(const struct heif_image_handle* handle,
+              const struct heif_image* image, const std::string& filename) override;
+};
+
+#endif  // EXAMPLE_ENCODER_TIFF_H
