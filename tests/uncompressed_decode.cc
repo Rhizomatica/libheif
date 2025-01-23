@@ -23,7 +23,7 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 */
-#include "catch.hpp"
+#include "catch_amalgamated.hpp"
 #include "libheif/heif.h"
 #include "libheif/api_structs.h"
 #include <cstdint>
@@ -164,6 +164,7 @@ TEST_CASE("check image handle no metadata blocks") {
   heif_context_free(context);
 }
 
-
-
+TEST_CASE("check uncompressed is advertised") {
+  REQUIRE(heif_have_decoder_for_format(heif_compression_uncompressed));
+}
 
